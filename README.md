@@ -1,6 +1,6 @@
 The control unit (Raspberry Pi) runs as a server. It controls the physical pins on the board based on received protocols. The Pi at this point in time is set to 192.168.10.100, constantly accepting clients. Client in this case refers to any attempt at making the control unit perform some action. Some user interface can act as a client, sending and receiving data, then closing. Some user interface can also create multiple clients, connecting concurrently.
 # Server
-When a client connects, the server expects a JSON formatted protocol (see [[#Formatting]]). It keeps the client socket open and puts it in a queue along with the protocol received. The main thread is constantly trying to pull from the queue. This allows for a queueing system of many protocols, and handles multiple clients even. However, this also complicates cancelation of said protocol, since by default, any attempts to reach the server will be put last in queue and will be stale when reached.
+When a client connects, the server expects a JSON formatted protocol (see Formatting). It keeps the client socket open and puts it in a queue along with the protocol received. The main thread is constantly trying to pull from the queue. This allows for a queueing system of many protocols, and handles multiple clients even. However, this also complicates cancelation of said protocol, since by default, any attempts to reach the server will be put last in queue and will be stale when reached.
 ## Usage
 ### Initialize(int port)
 Handles all setup needed for the server to run. Usage is simple:
